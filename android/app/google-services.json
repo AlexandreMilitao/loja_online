@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "596203458733",
+    "project_id": "lojaflutter-fa338",
+    "storage_bucket": "lojaflutter-fa338.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596203458733:android:45c6e9d1a3332d49503624",
+        "android_client_info": {
+          "package_name": "br.com.alexandre.loja_online"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596203458733-l8j8ag2qtgk0f2p7llj20t65lk2bd0hv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUgUmO05QegHJZwLS8JtkpUiUpranWh1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596203458733-l8j8ag2qtgk0f2p7llj20t65lk2bd0hv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
