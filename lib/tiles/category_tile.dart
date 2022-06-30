@@ -16,7 +16,7 @@ class CategoryTile extends StatelessWidget {
         backgroundImage: NetworkImage(snapshot.get("icon")),
       ),
       title: Text(snapshot.get("title")),
-      trailing: Icon(Icons.keyboard_arrow_right),
+      trailing: const Icon(Icons.keyboard_arrow_right),
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
