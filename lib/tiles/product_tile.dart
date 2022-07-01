@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:loja_online/datas/product_data.dart';
+import 'package:loja_online/datas/product_data.dart' show ProductData;
 
 class ProductTile extends StatelessWidget {
   const ProductTile({Key? key, this.type, required this.product})

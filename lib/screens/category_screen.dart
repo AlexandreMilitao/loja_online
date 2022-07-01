@@ -44,17 +44,19 @@ class CategoryScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(4.0),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisExtent: 4.0,
-                      crossAxisSpacing: 4.0,
-                      childAspectRatio: 0.65,
-                    ),
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 4.0,
+                            crossAxisSpacing: 4.0,
+                            childAspectRatio: 0.65),
                     itemCount: snapshot.data!.docs.length,
                     itemBuilder: (context, index) {
-                      return ProductTile(
-                        type: "grid",
-                        product: ProductData.fromDocument(
-                            snapshot.data!.docs[index]),
+                      return Container(
+                        alignment: Alignment.center,
+                        child: ProductTile(
+                          type: "grid",
+                          product: ProductData.fromDocument(
+                              snapshot.data!.docs[index]),
+                        ),
                       );
                     },
                   ),
