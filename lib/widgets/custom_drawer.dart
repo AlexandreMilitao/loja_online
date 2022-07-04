@@ -87,7 +87,7 @@ class CustomDrawer extends StatelessWidget {
               ),
               DrawerTile(
                 icon: Icons.list,
-                text: "Produts",
+                text: "Produtos",
                 controller: pageController,
                 page: 1,
               ),
