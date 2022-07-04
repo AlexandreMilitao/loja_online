@@ -116,6 +116,30 @@ class _ProductScreenState extends State<ProductScreen> {
                     }).toList(),
                   ),
                 ),
+                const SizedBox(height: 16.0),
+                SizedBox(
+                  height: 44.0,
+                  child: ElevatedButton(
+                      onPressed: size != null ? () {} : null,
+                      style: ElevatedButton.styleFrom(
+                        primary: primaryColor,
+                      ),
+                      child: const Text(
+                        "Adicionar ao carrinho",
+                        style: TextStyle(fontSize: 18.0),
+                      )),
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                const Text(
+                  "Descrição",
+                  style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  product.description!,
+                  style: const TextStyle(fontSize: 16.0),
+                ),
               ],
             ),
           )
