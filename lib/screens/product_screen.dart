@@ -20,6 +20,7 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   final ProductData product;
   _ProductScreenState(this.product);
+  String? size;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +71,51 @@ class _ProductScreenState extends State<ProductScreen> {
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
                       color: primaryColor),
-                )
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                const Text(
+                  "Tamanho",
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(
+                  height: 34.0,
+                  child: GridView(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    scrollDirection: Axis.horizontal,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 1,
+                      mainAxisSpacing: 8.0,
+                      childAspectRatio: 0.5,
+                    ),
+                    children: product.sizes!.map((s) {
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            size = s;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(4.0)),
+                            border: Border.all(
+                                color: s == size ? primaryColor : Colors.grey,
+                                width: 3.0),
+                          ),
+                          width: 50.0,
+                          alignment: Alignment.center,
+                          child: Text(s),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
               ],
             ),
           )
