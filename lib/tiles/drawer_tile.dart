@@ -23,7 +23,7 @@ class DrawerTile extends StatelessWidget {
           Navigator.of(context).pop();
           controller.jumpToPage(page);
         },
-        child: Container(
+        child: SizedBox(
           height: 60.0,
           child: Row(
             children: <Widget>[
