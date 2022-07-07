@@ -17,10 +17,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   final _formkey = GlobalKey<FormState>();
 
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     final Color primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: const Text("Criar Conta"),
         centerTitle: true,
@@ -44,6 +47,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: (text) {
                     if (text!.isEmpty) {
                       return "Nome Inválido";
+                    } else {
+                      null;
                     }
                   },
                 ),
@@ -55,6 +60,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: (text) {
                     if (text!.isEmpty || !text.contains("@")) {
                       return "E-mail Inválido";
+                    } else {
+                      null;
                     }
                   },
                 ),
@@ -66,6 +73,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: (text) {
                     if (text!.isEmpty || text.length <= 7) {
                       return "Senha invalida";
+                    } else {
+                      null;
                     }
                   },
                 ),
@@ -76,6 +85,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: (text) {
                     if (text!.isEmpty) {
                       return "Endereço invalida";
+                    } else {
+                      null;
                     }
                   },
                 ),
@@ -115,6 +126,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  void _onSuccess() {}
-  void _onFail() {}
+  void _onSuccess() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text("Usuário criado com sucesso!"),
+        backgroundColor: Theme.of(context).primaryColor,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+    Future.delayed(const Duration(seconds: 2)).then((_) {
+      Navigator.of(context).pop();
+    });
+  }
+
+  void _onFail() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Falha ao criar usuário."),
+        backgroundColor: Colors.redAccent,
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
 }

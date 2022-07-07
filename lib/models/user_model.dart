@@ -21,7 +21,6 @@ class UserModel extends Model {
   }) async {
     isLoading = true;
     notifyListeners();
-
     _auth
         .createUserWithEmailAndPassword(
       email: userData["email"],
@@ -47,14 +46,23 @@ class UserModel extends Model {
     notifyListeners();
 
     await Future.delayed(const Duration(seconds: 3));
-
     isLoading = false;
+    notifyListeners();
+  }
+
+  void signOut() async {
+    await _auth.signOut();
+    userData = {};
+    firebaseUser = null;
+
     notifyListeners();
   }
 
   void recoverPass() {}
 
-  bool? isLoggedIn() {}
+  bool isLoggedIn() {
+    return firebaseUser != null;
+  }
 
   Future _saveUserdata(Map<String, dynamic> userData) async {
     await FirebaseFirestore.instance
