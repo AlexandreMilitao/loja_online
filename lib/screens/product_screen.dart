@@ -18,18 +18,18 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   final ProductData product;
   _ProductScreenState(this.product);
-  String? size;
+  late String size;
 
   @override
   Widget build(BuildContext context) {
     final Color primaryColor = Theme.of(context).primaryColor;
 
-    final List imgList = product.images!;
+    final List imgList = product.images;
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(product.title!),
+        title: Text(product.title),
       ),
       body: ListView(
         children: <Widget>[
@@ -56,7 +56,7 @@ class _ProductScreenState extends State<ProductScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Text(
-                  product.title!,
+                  product.title,
                   style: const TextStyle(
                     fontSize: 20.0,
                     fontWeight: FontWeight.w500,
@@ -64,7 +64,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   maxLines: 3,
                 ),
                 Text(
-                  "R\$ ${product.price!.toStringAsFixed(2)}",
+                  "R\$ ${product.price.toStringAsFixed(2)}",
                   style: TextStyle(
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
@@ -91,7 +91,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       mainAxisSpacing: 8.0,
                       childAspectRatio: 0.5,
                     ),
-                    children: product.sizes!.map((s) {
+                    children: product.sizes.map((s) {
                       return GestureDetector(
                         onTap: () {
                           setState(() {
@@ -135,7 +135,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  product.description!,
+                  product.description,
                   style: const TextStyle(fontSize: 16.0),
                 ),
               ],

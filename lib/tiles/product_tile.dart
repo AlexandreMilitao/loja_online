@@ -28,7 +28,7 @@ class ProductTile extends StatelessWidget {
                   AspectRatio(
                     aspectRatio: 0.8,
                     child: Image.network(
-                      product.images![0],
+                      product.images[0],
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -38,11 +38,11 @@ class ProductTile extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           Text(
-                            product.title!,
+                            product.title,
                             style: const TextStyle(fontWeight: FontWeight.w500),
                           ),
                           Text(
-                            "R\$ ${product.price!.toStringAsFixed(2)}",
+                            "R\$ ${product.price.toStringAsFixed(2)}",
                             style: TextStyle(
                                 color: Theme.of(context).primaryColor,
                                 fontSize: 17.0,
@@ -59,7 +59,7 @@ class ProductTile extends StatelessWidget {
                   Flexible(
                     flex: 1,
                     child: Image.network(
-                      product.images![0],
+                      product.images[0],
                       fit: BoxFit.cover,
                       height: 250.0,
                     ),
@@ -70,11 +70,11 @@ class ProductTile extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Column(children: <Widget>[
                         Text(
-                          product.title!,
+                          product.title,
                           style: const TextStyle(fontWeight: FontWeight.w500),
                         ),
                         Text(
-                          "R\$ ${product.price!.toStringAsFixed(2)}",
+                          "R\$ ${product.price.toStringAsFixed(2)}",
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 17.0,

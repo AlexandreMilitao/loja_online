@@ -54,7 +54,7 @@ class CustomDrawer extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Ola, ${!model.isLoggedIn() ? "" : model.userData["name"]}",
+                                "${!model.isLoggedIn() ? "" : model.userData["name"]}",
                                 style: const TextStyle(
                                   fontSize: 18.0,
                                   fontWeight: FontWeight.bold,
@@ -78,7 +78,7 @@ class CustomDrawer extends StatelessWidget {
                                       ),
                                     );
                                   } else {
-                                    null;
+                                    model.signOut();
                                   }
                                 },
                               ),

@@ -26,9 +26,9 @@ class UserModel extends Model {
       email: userData["email"],
       password: pass,
     )
-        .then((firebaseUser) async {
-      firebaseUser = firebaseUser;
-
+        .then((user) async {
+      firebaseUser = user as User;
+      print(firebaseUser);
       await _saveUserdata(userData);
 
       onSuccess();
@@ -41,11 +41,22 @@ class UserModel extends Model {
     });
   }
 
-  void singIn() async {
+  void singIn(
+      {required String email,
+      required String pass,
+      required VoidCallback onSuccess,
+      required VoidCallback onFail}) async {
     isLoading = true;
     notifyListeners();
 
-    await Future.delayed(const Duration(seconds: 3));
+    _auth.signInWithEmailAndPassword(email: email, password: pass).then((user) {
+      print(firebaseUser);
+      firebaseUser = user as User;
+      onSuccess();
+      isLoading = false;
+      notifyListeners();
+    }).catchError((e) {});
+    onFail();
     isLoading = false;
     notifyListeners();
   }
@@ -67,7 +78,7 @@ class UserModel extends Model {
   Future _saveUserdata(Map<String, dynamic> userData) async {
     await FirebaseFirestore.instance
         .collection("users")
-        .doc(firebaseUser?.uid)
+        .doc(firebaseUser!.uid)
         .set(userData);
     this.userData = userData;
   }
