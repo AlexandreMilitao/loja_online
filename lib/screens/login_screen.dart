@@ -80,7 +80,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (_emailController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text(
+                                    "Insira seu e-mail para recuperação")));
+                      } else {
+                        model.recoverPass(_emailController.text);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Confira seu e-mail')));
+                      }
+                      ;
+                    },
                     child: const Text(
                       "Esqueci minha senha",
                       textAlign: TextAlign.right,
