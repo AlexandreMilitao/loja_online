@@ -20,4 +20,12 @@ class ProductData {
     price = snapshot.get("price") + 0.0;
     sizes = snapshot.get("sizes");
   }
+
+  Map<String, dynamic> toResumeMap() {
+    return {
+      "title": title,
+      "description": description,
+      "price": price,
+    };
+  }
 }
