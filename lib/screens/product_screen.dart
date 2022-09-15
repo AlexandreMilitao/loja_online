@@ -2,9 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
+import 'package:loja_online/datas/cart_product.dart';
 import 'package:loja_online/datas/product_data.dart';
+import 'package:loja_online/models/cart_model.dart';
+import 'package:loja_online/screens/login_screen.dart';
 import 'package:loja_online/tabs/products_tab.dart';
 import 'package:loja_online/tiles/product_tile.dart';
+
+import '../models/user_model.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({Key? key, required this.product}) : super(key: key);
@@ -18,7 +23,7 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   final ProductData product;
   _ProductScreenState(this.product);
-  late String size;
+  String? size;
 
   @override
   Widget build(BuildContext context) {
@@ -118,14 +123,34 @@ class _ProductScreenState extends State<ProductScreen> {
                 SizedBox(
                   height: 44.0,
                   child: ElevatedButton(
-                      onPressed: size != null ? () {} : null,
-                      style: ElevatedButton.styleFrom(
-                        primary: primaryColor,
-                      ),
-                      child: const Text(
-                        "Adicionar ao carrinho",
-                        style: TextStyle(fontSize: 18.0),
-                      )),
+                    onPressed: size != null
+                        ? () {
+                            if (UserModel.of(context).isLoggedIn()) {
+                              CartProduct cartProduct = CartProduct();
+                              cartProduct.size = size;
+                              cartProduct.quantity = 1;
+                              cartProduct.pid = product.id;
+
+                              CartModel.of(context).addCartItem(cartProduct);
+                            } else {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginScreen(),
+                                ),
+                              );
+                            }
+                          }
+                        : null,
+                    style: ElevatedButton.styleFrom(
+                      primary: primaryColor,
+                    ),
+                    child: Text(
+                      UserModel.of(context).isLoggedIn()
+                          ? "Adicionar ao carrinho"
+                          : "Entre para comprar",
+                      style: TextStyle(fontSize: 18.0),
+                    ),
+                  ),
                 ),
                 const SizedBox(
                   height: 16.0,
