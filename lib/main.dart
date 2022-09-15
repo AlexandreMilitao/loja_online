@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_online/models/cart_model.dart';
 import 'package:loja_online/models/user_model.dart';
 import 'package:loja_online/screens/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,14 +18,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScopedModel<UserModel>(
       model: UserModel(),
-      child: MaterialApp(
-        title: "Flutter's Clothing",
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          primaryColor: const Color.fromARGB(255, 4, 125, 141),
-        ),
-        debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+      child: ScopedModelDescendant(
+        builder: (context, child, UserModel model) {
+          return ScopedModel<CartModel>(
+            model: CartModel(model),
+            child: MaterialApp(
+              title: "Flutter's Clothing",
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+                primaryColor: const Color.fromARGB(255, 4, 125, 141),
+              ),
+              debugShowCheckedModeBanner: false,
+              home: HomeScreen(),
+            ),
+          );
+        },
       ),
     );
   }
