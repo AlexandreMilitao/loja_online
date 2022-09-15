@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_online/widgets/cart_buttom.dart';
 
 import '../tabs/home_tab.dart';
 import '../tabs/products_tab.dart';
@@ -17,6 +18,7 @@ class HomeScreen extends StatelessWidget {
       children: <Widget>[
         Scaffold(
           body: const HomeTab(),
+          floatingActionButton: CartButtom(),
           drawer: CustomDrawer(
             pageController: _pageController,
           ),
