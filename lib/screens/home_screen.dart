@@ -28,6 +28,7 @@ class HomeScreen extends StatelessWidget {
             title: const Text("Produtos"),
             centerTitle: true,
           ),
+          floatingActionButton: CartButtom(),
           drawer: CustomDrawer(pageController: _pageController),
           body: const ProductsTab(),
         ),

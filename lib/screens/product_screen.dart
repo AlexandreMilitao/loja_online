@@ -10,6 +10,7 @@ import 'package:loja_online/tabs/products_tab.dart';
 import 'package:loja_online/tiles/product_tile.dart';
 
 import '../models/user_model.dart';
+import 'cart_screen.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({Key? key, required this.product}) : super(key: key);
@@ -133,6 +134,12 @@ class _ProductScreenState extends State<ProductScreen> {
                               cartProduct.category = product.category;
 
                               CartModel.of(context).addCartItem(cartProduct);
+
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const CartScreen(),
+                                ),
+                              );
                             } else {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
