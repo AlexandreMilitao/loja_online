@@ -127,9 +127,10 @@ class _ProductScreenState extends State<ProductScreen> {
                         ? () {
                             if (UserModel.of(context).isLoggedIn()) {
                               CartProduct cartProduct = CartProduct();
-                              cartProduct.size = size;
+                              cartProduct.size = size!;
                               cartProduct.quantity = 1;
                               cartProduct.pid = product.id;
+                              cartProduct.category = product.category;
 
                               CartModel.of(context).addCartItem(cartProduct);
                             } else {

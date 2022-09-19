@@ -4,6 +4,8 @@ import 'package:loja_online/models/user_model.dart';
 import 'package:loja_online/screens/login_screen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import '../tiles/cart_tile.dart';
+
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
 
@@ -75,7 +77,15 @@ class CartScreen extends StatelessWidget {
               ),
             );
           } else {
-            return Container();
+            return ListView(
+              children: <Widget>[
+                Column(
+                  children: model.products.map((product) {
+                    return CartTile(cartProduct: product);
+                  }).toList(),
+                )
+              ],
+            );
           }
         },
       ),

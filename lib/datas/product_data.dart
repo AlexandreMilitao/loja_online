@@ -15,11 +15,11 @@ class ProductData {
     title = snapshot.get("title");
     description = snapshot.get("description");
     images = snapshot.get("img");
-    price = snapshot.get("price") + 0.0;
+    price = snapshot.get("price");
     sizes = snapshot.get("sizes");
   }
 
-  Map<String, dynamic> toResumeMap() {
+  Map<String, dynamic> toResumedMap() {
     return {
       "title": title,
       "description": description,
