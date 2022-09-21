@@ -66,7 +66,7 @@ class UserModel extends Model {
       onSuccess();
       await _loadCurrentUser();
       isLoading = false;
-      notifyListeners();
+      //notifyListeners();
     }).catchError((e) {});
     onFail();
     isLoading = false;
@@ -108,8 +108,10 @@ class UserModel extends Model {
             .collection("users")
             .doc(firebaseUser!.uid)
             .get();
-        print(docUser.data());
+        //print('${docUser.data()}  docUser');
+
         this.userData = docUser.data() as Map<String, dynamic>;
+        //print('${this.userData} userData');
       }
     }
     notifyListeners();

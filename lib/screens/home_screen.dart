@@ -27,6 +27,7 @@ class HomeScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text("Produtos"),
             centerTitle: true,
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           floatingActionButton: CartButtom(),
           drawer: CustomDrawer(pageController: _pageController),

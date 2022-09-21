@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:loja_online/models/cart_model.dart';
 import 'package:loja_online/models/user_model.dart';
 import 'package:loja_online/screens/login_screen.dart';
+import 'package:loja_online/widgets/cart_price.dart';
+import 'package:loja_online/widgets/ship_card.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import '../tiles/cart_tile.dart';
+import '../widgets/discount_card.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -13,6 +16,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
         title: Text('Meu carrinho'),
         actions: <Widget>[
           Container(
@@ -57,13 +61,20 @@ class CartScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            Theme.of(context).primaryColor),
+                      ),
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => LoginScreen()));
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(),
+                          ),
+                        );
                       },
                       child: const Text(
                         'Entra',
-                        style: TextStyle(fontSize: 18.0),
+                        style: TextStyle(fontSize: 18.0, color: Colors.white),
                       ))
                 ],
               ),
@@ -83,6 +94,11 @@ class CartScreen extends StatelessWidget {
                   children: model.products.map((product) {
                     return CartTile(cartProduct: product);
                   }).toList(),
+                ),
+                DiscountCart(),
+                ShipCard(),
+                CartPrice(
+                  buy: () {},
                 )
               ],
             );
