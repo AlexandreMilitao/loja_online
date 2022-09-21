@@ -10,9 +10,9 @@ class CartPrice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child:
             ScopedModelDescendant<CartModel>(builder: (context, child, model) {
           double price = model.getProductsPrice();
@@ -70,7 +70,7 @@ class CartPrice extends StatelessWidget {
               ),
               const SizedBox(height: 12.0),
               TextButton(
-                onPressed: () {},
+                onPressed: buy,
                 child: const Text(
                   'Finalizar Pedido',
                   style: TextStyle(color: Colors.white),

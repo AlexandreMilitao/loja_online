@@ -8,7 +8,7 @@ class CartProduct {
   late int quantity;
   late String size;
 
-  ProductData? productData;
+  late ProductData productData;
 
   CartProduct();
 
@@ -21,14 +21,12 @@ class CartProduct {
   }
 
   Map<String, dynamic> toMap() {
-    ;
-
     return {
       "category": category,
       "pid": pid,
       "quantity": quantity,
       "size": size,
-      //"produdct": productData.toResumedMap() ,
+      "product": productData.toResumedMap(),
     };
   }
 }

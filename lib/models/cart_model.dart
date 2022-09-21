@@ -71,8 +71,7 @@ class CartModel extends Model {
     notifyListeners();
   }
 
-  void finishOrder() async {
-    if (products.length == 0) return;
+  Future<String> finishOrder() async {
     isLoading = true;
     notifyListeners();
 
@@ -104,6 +103,19 @@ class CartModel extends Model {
         .doc(user.firebaseUser!.uid)
         .collection('cart')
         .get();
+
+    for (DocumentSnapshot doc in query.docs) {
+      doc.reference.delete();
+    }
+
+    products.clear();
+    couponCode = null;
+    discountPercentage = 0;
+    isLoading = false;
+
+    notifyListeners();
+
+    return refOrder.id;
   }
 
   void _loadCarItems() async {
@@ -130,7 +142,7 @@ class CartModel extends Model {
     double price = 0.0;
     for (CartProduct c in products) {
       if (c.productData != null) {
-        price += c.quantity * c.productData!.price;
+        price += c.quantity * c.productData.price;
       }
     }
     return price;
